@@ -5,8 +5,8 @@ from bson.objectid import ObjectId
 app = Flask(__name__)
 
 # MongoDB configuration
-# client = MongoClient("mongodb://localhost:27017/")
-cluster = MongoClient("mongodb+srv://admin:admin@cluster0.3rtsl.mongodb.net/?retryWrites=true&w=majority&appName=cluster0")
+cluster = MongoClient("mongodb+srv://admin:admin@cluster0.3rtsl.mongodb.net/?retryWrites=true&w=majority&appName=cluster0",
+                      tlsCAFile=certifi.where())
 db = cluster["titan"]
 products_collection = db["products"]
 
