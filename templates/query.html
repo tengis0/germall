@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<section>
+    <h2>{{ title }}</h2>
+    <br><br>
+    <table class="custom-table">
+        <thead>
+            <tr>
+                {% for column in headers %}
+                    <th>{{ column }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in results %}
+                <tr>
+                    {% for value in row %}
+                        <td>{{ value }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</section>
+{% endblock %}
