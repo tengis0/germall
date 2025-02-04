@@ -7,6 +7,7 @@ app = Flask(__name__)
 
 # MongoDB configuration
 cluster = MongoClient("mongodb+srv://admin:admin@cluster0.3rtsl.mongodb.net/?retryWrites=true&w=majority&appName=cluster0",
+                      tls=True,
                       tlsCAFile=certifi.where())
 db = cluster["titan"]
 products_collection = db["products"]
