@@ -1,14 +1,14 @@
+import os
+import certifi
 from flask import Flask, render_template, request, redirect, url_for
 from pymongo import MongoClient
 from bson.objectid import ObjectId
-import certifi
 
 app = Flask(__name__)
 
 # MongoDB configuration
-cluster = MongoClient("mongodb+srv://admin:admin@cluster0.3rtsl.mongodb.net/?retryWrites=true&w=majority&appName=cluster0",
-                      tls=True,
-                      tlsCAFile=certifi.where())
+connection_string = os.getenv("MONGO_URI")
+cluster = MongoClient(connection_string, tls=True, tlsCAFile=certifi.where())
 db = cluster["titan"]
 products_collection = db["products"]
 
