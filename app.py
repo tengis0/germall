@@ -5,9 +5,10 @@ from bson.objectid import ObjectId
 app = Flask(__name__)
 
 # MongoDB configuration
-client = MongoClient("mongodb://localhost:27017/")
-db = client["titan"]
-products_collection = db["test"]
+# client = MongoClient("mongodb://localhost:27017/")
+cluster = MongoClient("mongodb+srv://admin:admin@cluster0.3rtsl.mongodb.net/?retryWrites=true&w=majority&appName=cluster0")
+db = cluster["titan"]
+products_collection = db["products"]
 
 
 @app.route("/", methods=["GET", "POST"])
